@@ -33,7 +33,7 @@ and International Standards Organization standard for spatial data. In
 addition, `sf` provides a tidy spatial data format that allows for
 manipulation with the popular `dplyr` package.
 
-On Windoes, getting `sf` added is no different than adding any other
+On Windows, getting `sf` added is no different than adding any other
 package that is on CRAN.
 
     install.packages("sf")
