@@ -3,3 +3,6 @@
 .RData
 .Ruserdata
 troutlake_rspatial.Rproj
+lessons/nhld_study_lakes.*
+lessons/nhld_bathymetry
+lessons/*.zip

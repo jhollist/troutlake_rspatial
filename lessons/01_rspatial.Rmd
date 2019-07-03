@@ -96,7 +96,7 @@ There are many different packages available for creating maps in R, in the demos
 
 To make sure these are installed:
 
-```{r add_rgdal, eval=FALSE}
+```{r add_viz, eval=FALSE}
 install.packages("ggplot2")
 library("ggplot2")
 
