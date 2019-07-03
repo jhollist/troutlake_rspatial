@@ -1,0 +1,25 @@
+---
+output: github_document
+---
+
+
+```{r setup, echo=FALSE, warning=FALSE, purl=FALSE, message=FALSE}
+options(repos="http://cran.rstudio.com/")
+pkgs <- c("sf","sp","raster","knitr")
+x<-lapply(pkgs, library, character.only = TRUE)
+opts_chunk$set(tidy=FALSE)
+```
+ 
+# Making maps
+Now that we have all the infrastructure packages dealt with, we can read spatial data into R, do GISy type things to that data, and write those results out to other data formats.  We haven't talked about creating maps yet.  There are many ways we can do this, but we will focus on three: default plotting, static maps with `ggplot2`, and interactive maps with `mapview`.
+
+### Default plotting
+Default plotting methods exist within each of the major spatial packages listed above which allows us to use the  `plot()` function to creat a simple plot of our spatial data.  We will see this in action in the demo.
+
+### 
+
+
+
+
+
+
