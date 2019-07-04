@@ -18,8 +18,8 @@ Now that we have all the infrastructure packages dealt with, we can read spatial
 ## Lesson Outline
 - [Get some data](#get-some-data)
 - [Default plotting](#default-plotting)
-- [Maps with `ggplot2`](#maps-with-ggplot2)
 - [Maps with `mapview`](#maps-with-mapview)
+- [Maps with `ggplot2`](#maps-with-ggplot2)
 
 ## Get some data
 There are a lot of fancy ways to get spatial data into R (e.g. packages that wrap web APIs), but for this demo we will start simple and download a shapefile to our local machine.  I am new to Trout Lake, so I thought it would be fun to start here and get a few data layers about Trout Lake and make a map of those.  The code below that should get you set up with two shapefiles on your local machine. 
@@ -54,6 +54,7 @@ plot(st_geometry(ntl_lakes))
 And then we can add the bathymetry:
 
 ```{r}
+plot(st_geometry(ntl_lakes))
 plot(st_geometry(ntl_bathy), add = TRUE, border = ntl_bathy$Depth_ft)
 ```
 
@@ -63,12 +64,12 @@ This kind of map is useful (in spite of this particular map being ugly) when you
 The `mapview` package provides a lot of additional functionality on top of the default plotting.  It uses the `leaflet` package but makes it easier to build some quick maps.  By using leaflet, we get all that great web map functionality (pan, zoom, base maps) plus we can interact with the data visually.  Let's do the same map we did above, but with `mapview` instead. 
 
 ```{r echo=FALSE}
-mapview(ntl_lakes) + mapview(ntl_bathy, zcol = "Depth_ft")
+library(mapview)
 ```
 
 
-
 ```{r eval=FALSE}
+library(mapview)
 mapview(ntl_lakes) + mapview(ntl_bathy, zcol = "Depth_ft")
 ```
 
@@ -77,9 +78,60 @@ mapview(ntl_lakes) + mapview(ntl_bathy, zcol = "Depth_ft")
 Well, that's an improvement!  We can zoom, pan, select, turn on and off layers, etc.  This is the package I use the most to interact with my spatial data.  But, when I need to make figures for presentations or papers, I usually turn to the old standby for data viz in R, `ggplot2`.  Let's work on creating a static map with `ggplot2`
 
 ## Maps with `ggplot2`
+The *de facto* package for data visualization in R is `ggplot2`.  Given it's ubiquity for creating static figures, it is nice that we can build on this functionality to create maps in R as well. Plus, let's get a little more in depth and manipulate our spatial data as well.  I originally said that we were going to create a map of Trout Lake.  Let's work on that. 
 
+So, let's start with filtering out Trout Lake from the other lakes and limiting the contours that we display to every 20 ft but without the 0 depth contour. 
 
+```{r}
+library(dplyr)
+trout_lake <- ntl_lakes %>%
+  filter(LAKE_NAME == "Trout Lake")
 
+trout_lake_bathy <- ntl_bathy %>%
+  filter(LakeID == "TR") %>%
+  filter(Depth_ft > 0) %>%
+  filter(Depth_ft %% 20 == 0) %>%
+  st_transform(crs = st_crs(trout_lake))
+```
+
+With those filtered out, we can now work on making our map.  First, the lake.
+
+```{r message=FALSE}
+library(ggplot2)
+ggplot(trout_lake) +
+  geom_sf()
+```
+
+Nice!  Let's add in the bathymetry with the lines colored by depth.
+
+```{r}
+tl_map <- ggplot(trout_lake) +
+  geom_sf() +
+  geom_sf(data = trout_lake_bathy, aes(colour = Depth_ft))
+tl_map
+```
+
+Getting there...  Those colors are hard for me and my old eyes to differentiate.  Let's use something that has research backing up its color palette, Viridis!  And while we are at it, we can make the shoreline standout a bit from the bathymetry and clean up our overall look and feel.
+
+```{r}
+tl_map <- ggplot(trout_lake) +
+  geom_sf(size = 1, color = "black", fill = "steelblue4", alpha = 0.3) +
+  geom_sf(data = trout_lake_bathy, aes(colour = Depth_ft), fill = NA, size = 0.75) +
+  scale_colour_viridis_c() + 
+  labs(title = "Trout Lake Batyhmetry") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5))
+tl_map
+```
+
+Could probably use a bit more cleaning up, but for the most part looks pretty good!
+
+Lastly, let's save it to a file to include in our presentations and manuscripts!
+
+```{r}
+ggsave("tl_bathymetry_map.jpg", tl_map, width = 8.5, height = 11, units = "in", 
+       dpi = 300)
+```
 
 
 
