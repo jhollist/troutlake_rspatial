@@ -1,0 +1,81 @@
+
+# R Packages for limnology
+
+In addition to the more general purpose packages we’ve already
+discussed, there are a slug of domain specific packages available as
+well. This is true in ecology in general but also more specifically to
+limnology as well. We are going to do a quick survey of some of these
+limnology specific packages and then follow up with what I am calling
+the “Jeff Ego Demo” as we run through some examples with two packages I
+have written: `lakemorpho` and `elevatr`.
+
+## Annotated list of packages useful for limnology
+
+A lot of what I am showing you today was culled from [Joe
+Stachelek’s](https://jsta.rbind.io) excellent [Data Science
+Portfolio](https://jsta.github.io/gh_cran_portfolio/). I’ve just added
+some of my own thoughts to each of the selected packages as well as
+added in a couple more packages. I have limited the selection to
+packages that are currently published to CRAN (mostly). But big thanks
+to Joe for making this pretty easy to pull together (and for writing
+many of these)\!
+
+### Data Packages
+
+The following are list of packages that make retrieving limnology
+relevant data directly in R a little bit easier.
+
+  - `dataRetrieval`: This package provides access to USGS and USEPA data
+    stored in the National Water Information System (NWIS) and the Water
+    Quality Portal. <https://cran.rstudio.org/package=dataRetrieval>
+  - `elevatr`: A package for accessing elevation data as rasters or
+    points directly from R. Currently accesses data from the Terrain
+    Tiles hosted as open data by Amazon Web Services or from USGS’ point
+    elevation service. Development version of the package provides
+    access directly to Shuttle Radar Topogrpahy Mission (SRTM) data.
+    <https://cran.rstudio.org/package=elevatr>
+  - `FedData`: There are many federal datasets that come in a variety of
+    formats. The `FedData` package provides access to many of these and
+    takes a way a lot of the pain of working with all the multiple
+    formats. Some of the datasets it access are: NHD, NED, NLCD, SSURGO,
+    and Daymet. <https://cran.rstudio.org/package=FedData>
+  - `LAGOSNE`: Provides access to the LAGOSNE dataset, a dataset on more
+    than 51,000 lakes in 17 states from the northeast and midwest United
+    States. <https://cran.rstudio.org/package=LAGOSNE>
+  - `nhdR`: Package provides access to both the National Hydrography
+    Dataset (NHD) and the National Hydrography Dataset Plus (NHDPlus).
+    <https://cran.rstudio.org/package=nhdR>
+  - `wikilake`: Many lakes have pages on Wikipedia. This package scrapes
+    the metadata for these lakes and returns it as a data frame in R.
+    <https://cran.rstudio.org/package=wikilake>
+  - `nlaR`: An R package for accessing the 2007 and 2012 NLA data in R.
+    <https://cran.rstudio.org/package=nlaR>
+
+### Analysis Packages
+
+  - `GLMr`: This is one of the packages I’ve included that is not
+    currently on CRAN. It provides access to the General Lake Model in
+    R. It does require that the GLM be installed on your local machine
+    as well. <https://github.com/GLEON/GLMr>
+  - `glmtools`: Also not on CRAN, this package provides additional tools
+    for interacting with the General Lake Model.
+    <https://github.com/USGS-R/glmtools>
+  - `hydrolinks`: One of the big challenges in working with hydrology
+    data in general is associating point locations for samples with the
+    spatial data representing the waterbody or stream that was sampled.
+    The `hydrolinks` package provides tools for doing this.
+    <https://cran.rstudio.org/package=hydrolinks>
+  - `lakemorpho`: Lake morphometry metrics are some of the most basic
+    limnology measurements made. This package calculates a general suite
+    of these metrics. <https://cran.rstudio.org/package=lakemorpho>
+  - `rLakeAnalyzer`: An R implemetation of the Lake Analyzer tool set
+    (<http://gleon.org/research/projects/lake-analyzer>). It calulcates
+    metrics such as Lake Number, Schmidt stability and Wedderburn
+    number. <https://cran.rstudio.org/package=rLakeAnalyzer>
+
+## Relevant task view
+
+A recent addition to CRAN Task Views is the Hydrology Task View,
+<https://cran.rstudio.org/web/views/Hydrology.html>. It is much broader
+than this list here but is a very good first stop for limnology,
+hydrology, and aquatic ecology R packages.
