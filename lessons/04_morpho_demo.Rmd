@@ -26,7 +26,10 @@ We still should be working in the "rspatial_workshop" project we created in the 
 2. When that empty new file opens up, save it as "lakemorpho_demo.R"
 
 ## Required packages
+We will need to add our required packages to the top of our script.
+
 ```{r message=FALSE}
+library(raster)
 library(dplyr)
 library(sf)
 library(lakemorpho)
@@ -34,15 +37,67 @@ library(elevatr)
 ```
 
 ## Revisit our data
-Just to make sure we have everything loaded up again and working
+Just to make sure we have everything loaded up again and working let's add some code to read in the spatial data we have already downloaded.  
 
 
 ```{r}
-ntl_lakes <- st_read("nhld_study_lakes.shp")
-trout_lake <- ntl_lakes %>%
+trout_lake <- st_read("nhld_study_lakes.shp") %>% 
   filter(LAKE_NAME == "Trout Lake")
+trout_lake_bathy <- st_read("nhld_bathymetry/nhld_bathymetry.shp") %>%
+  filter(LakeID == "TR")
 ```
 
+We won't be using the bathymetry in this analysis (those tools are a future enhancment to `lakemorpho`, I hope), but we will load it up so we can check some numbers later...
 
+## Get elevation data
+There are many sources for elevation data.  The `elevatr` package provides access to two currently.  It returns raster DEMs from the Global Terrain Tiles (a combination of sources) from Amazon Web Services, and point data elevations from either the Terrain Tiles or USGS Point Elevation Service.  We are going to get the raster DEM from the area surrounding Trout Lake.  This data is used to estimate a maximum lake depth.
+
+```{r}
+trout_lake_dem <- get_elev_raster(trout_lake, z = 12, expand = 5000)
+```
+
+And we can take a quick look to make sure this is as we expect.
+
+```{r}
+plot(trout_lake_dem)
+plot(trout_lake, add = TRUE)
+```
+
+## Calculate Trout Lake Morphometry
+Now that we have spatial data for the lake itself, plus elevation data for the surrounding landscape, we can use these in `lakemorpho` to get our standard suite of metrics such as surface area, shoreline development, maximum lake length, maximum depth, etc.
+
+```{r}
+# Create the lakeMorpho object
+trout_lake_lmorpho <- lakeSurroundTopo(as(trout_lake, "Spatial"), trout_lake_dem)
+```
+
+With the `lakeMorpho` object created, we can now run the metrics one at a time, like:
+
+```{r}
+lakeFetch(trout_lake_lmorpho, 90)
+lakeShorelineDevelopment(trout_lake_lmorpho)
+```
+
+Or, we can take advantage of the convenience function, `calcLakeMetrics()` and do them all in one line of code.  This returns a list so the following code calculates the metrics and massages the list into a more familiar data frame.
+
+```{r}
+trout_lake_metrics <- calcLakeMetrics(trout_lake_lmorpho, bearing =  90, pointDens = 100, correctFactor = 1) %>%
+  as.data.frame() %>%
+  mutate(lake_name = "Trout Lake") %>%
+  select(lake_name, everything()) %>% 
+  as_tibble()
+trout_lake_metrics
+```
+
+For those of you that are more familiar with Trout Lake than I am (all of you, probably), I hope that these metrics look about right.  A quick look at the maximum depth contour makes me feel at least somewhat confident!
+
+```{r}
+trout_lake_metrics$maxDepth
+max(trout_lake_bathy$Depth_m)
+```
+
+The simple method we used to estimate maximum depth here usually over predicts, as it does here, but by how much will vary regionally.  The `correctionFactor` argument could be used to adjust this if we had a regional `correctionFactor`.
+
+That's all for now.  Hopefully this quick survey of spatial data and lake morphometry in R was useful!
 
 
