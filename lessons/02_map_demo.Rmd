@@ -24,6 +24,19 @@ Now that we have all the infrastructure packages dealt with, we can read spatial
 ## Get some data
 There are a lot of fancy ways to get spatial data into R (e.g. packages that wrap web APIs), but for this demo we will start simple and download a shapefile to our local machine.  I am new to Trout Lake, so I thought it would be fun to start here and get a few data layers about Trout Lake and make a map of those.  The code below that should get you set up with two shapefiles on your local machine. 
 
+Before we do this, thought it is best to be working in project in RStudio.  For today we will just do this, but I encourage you to take a read of any of these excellent resources.  
+
+- [Using Projects: RStudio Support](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects)
+- [Workflow Chapter in R for Data Science](https://r4ds.had.co.nz/workflow-projects.html)
+- [Software Carpentry Project Management Lesson](https://swcarpentry.github.io/r-novice-gapminder/02-project-intro/)
+- [What they forgot to teach you about R - Project Oriented Workflows](https://whattheyforgot.org/project-oriented-workflow.html)
+
+But for now, lets create a new project in RStudio.  
+
+1. Go to File: New Project: New Directory: New Project.  
+2. In the dialog box for "Directory name:" put "rspatial_workshop". This will open up your new project.  
+3. In your newly created project (which should be open in RStudio now), go to File: New File and choose R Script.
+4. When that blank new R Script opens up, save it as "map_demo.R"
 
 ```{r, eval=FALSE, message=FALSE, warning=FALSE, echo=FALSE}
 lakes_url <- "https://github.com/jhollist/troutlake_rspatial/raw/master/data/ntl135_v2.zip"

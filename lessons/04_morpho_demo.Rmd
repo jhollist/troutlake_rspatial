@@ -1,0 +1,48 @@
+---
+output: github_document
+editor_options: 
+  chunk_output_type: console
+---
+
+
+```{r setup, echo=FALSE, warning=FALSE, purl=FALSE, message=FALSE}
+options(repos="http://cran.rstudio.com/")
+opts_chunk$set(tidy=FALSE)
+```
+ 
+# Demo: Lake morphometry in R
+
+## Lesson Outline
+- [New script](#new-script)
+- [Required packages](#required-packages)
+- [Revisit our data](#revisit-our-data)
+- [Get elevation data](#get-elevation-data)
+- [Calculate Trout Lake morphometry](#calculate-trout-lake-morphometry)
+
+## New script
+We still should be working in the "rspatial_workshop" project we created in the map demo.  For this demo, we will create another new script.  
+
+1. Go to File: New File: R Script.  
+2. When that empty new file opens up, save it as "lakemorpho_demo.R"
+
+## Required packages
+```{r message=FALSE}
+library(dplyr)
+library(sf)
+library(lakemorpho)
+library(elevatr)
+```
+
+## Revisit our data
+Just to make sure we have everything loaded up again and working
+
+
+```{r}
+ntl_lakes <- st_read("nhld_study_lakes.shp")
+trout_lake <- ntl_lakes %>%
+  filter(LAKE_NAME == "Trout Lake")
+```
+
+
+
+
