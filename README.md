@@ -18,5 +18,5 @@ Schedule for the mini-workshop is below:
 |8:40 AM - 9:00 AM|[The R spatial ecosystem](lessons/01_rspatial.md)|
 |9:00 AM - 9:20 AM|[Demo 1: Let's make a map](lessons/02_map_demo.md)|
 |9:20 AM - 9:40 AM|[R packages for limnology](lessons/03_limno.md)|
-|9:40 AM - 10:00 AM|[Demo 2: lake morphometry in R](lessons.//04_morpho_demo.md)|
+|9:40 AM - 10:00 AM|[Demo 2: lake morphometry in R](lessons/04_morpho_demo.md)|
 
