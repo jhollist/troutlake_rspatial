@@ -33,7 +33,17 @@ But for now, lets create a new project in RStudio.
 3. In your newly created project (which should be open in RStudio now), go to File: New File and choose R Script.
 4. When that blank new R Script opens up, save it as "map_demo.R"
 
+Let's now add code to get some data.
 
+
+```r
+lakes_url <- "https://github.com/jhollist/troutlake_rspatial/raw/master/data/ntl135_v2.zip"
+bathy_url <- "https://github.com/jhollist/troutlake_rspatial/raw/master/data/nhld_bathymetry_v2.zip"
+download.file(lakes_url, "lakes.zip")
+download.file(bathy_url, "bathy.zip")
+unzip("lakes.zip")
+unzip("bathy.zip")
+```
 
 Now that we have local data, we can create some R objects by reading in the shapefiles with the `sf` package.
 
