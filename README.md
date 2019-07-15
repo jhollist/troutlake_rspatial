@@ -1,7 +1,7 @@
 # Mini-workshop on R Spatial and Limnology Packages
 ## Trout Lake Station 
-### July 18, 2019
-### 8:30 am - 10:00 am
+### July 17, 2019
+### 5:30 pm - 7:00 pm
 ### Boulder Junction, WI
 
 This repository contains the materials used in a mini-workshop about spatial 
@@ -14,9 +14,9 @@ Schedule for the mini-workshop is below:
 
 |Time|Topic|
 |----|-----|
-|8:30 AM - 8:40 AM|Welcome|
-|8:40 AM - 9:00 AM|[The R spatial ecosystem](lessons/01_rspatial.md)|
-|9:00 AM - 9:20 AM|[Demo 1: Let's make a map](lessons/02_map_demo.md)|
-|9:20 AM - 9:40 AM|[R packages for limnology](lessons/03_limno.md)|
-|9:40 AM - 10:00 AM|[Demo 2: lake morphometry in R](lessons/04_morpho_demo.md)|
+|5:30 PM - 5:40 PM|Welcome|
+|5:40 PM - 6:00 PM|[The R spatial ecosystem](lessons/01_rspatial.md)|
+|6:00 PM - 6:20 PM|[Demo 1: Let's make a map](lessons/02_map_demo.md)|
+|6:20 PM - 6:40 PM|[R packages for limnology](lessons/03_limno.md)|
+|6:40 PM - 7:00 PM|[Demo 2: lake morphometry in R](lessons/04_morpho_demo.md)|
 
