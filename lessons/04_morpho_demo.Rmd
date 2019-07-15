@@ -1,15 +1,11 @@
 ---
 output: github_document
-editor_options: 
-  chunk_output_type: console
 ---
-
 
 ```{r setup, echo=FALSE, warning=FALSE, purl=FALSE, message=FALSE}
 options(repos="http://cran.rstudio.com/")
 opts_chunk$set(tidy=FALSE)
 ```
- 
 # Demo: Lake morphometry in R
 
 ## Lesson Outline
@@ -47,7 +43,7 @@ trout_lake_bathy <- st_read("nhld_bathymetry/nhld_bathymetry.shp") %>%
   filter(LakeID == "TR")
 ```
 
-We won't be using the bathymetry in this analysis (those tools are a future enhancment to `lakemorpho`, I hope), but we will load it up so we can check some numbers later...
+We won't be using the bathymetry in this analysis (those tools (e.g. hypsographic curves) are a future enhancement to `lakemorpho`, I hope), but we will load it up so we can check some numbers later...
 
 ## Get elevation data
 There are many sources for elevation data.  The `elevatr` package provides access to two currently.  It returns raster DEMs from the Global Terrain Tiles (a combination of sources) from Amazon Web Services, and point data elevations from either the Terrain Tiles or USGS Point Elevation Service.  We are going to get the raster DEM from the area surrounding Trout Lake.  This data is used to estimate a maximum lake depth.
@@ -78,7 +74,7 @@ lakeFetch(trout_lake_lmorpho, 90)
 lakeShorelineDevelopment(trout_lake_lmorpho)
 ```
 
-Or, we can take advantage of the convenience function, `calcLakeMetrics()` and do them all in one line of code.  This returns a list so the following code calculates the metrics and massages the list into a more familiar data frame.
+Or, we can take advantage of the convenience function, `calcLakeMetrics()` and do them all in one line of code.  This returns a list so the following code calculates the metrics and also massages the list into a more familiar data frame.
 
 ```{r}
 trout_lake_metrics <- calcLakeMetrics(trout_lake_lmorpho, bearing =  90, pointDens = 100, correctFactor = 1) %>%

@@ -14,11 +14,10 @@ have written: `lakemorpho` and `elevatr`.
 A lot of what I am showing you today was culled from [Joe
 Stachelek’s](https://jsta.rbind.io) excellent [Data Science
 Portfolio](https://jsta.github.io/gh_cran_portfolio/). I’ve just added
-some of my own thoughts to each of the selected packages as well as
-added in a couple more packages. I have limited the selection to
-packages that are currently published to CRAN (mostly). But big thanks
-to Joe for making this pretty easy to pull together (and for writing
-many of these)\!
+some of my own thoughts to each of the selected packages and added in a
+couple more packages. I have limited the selection to packages that are
+currently published to CRAN (mostly). But big thanks to Joe for making
+this pretty easy to pull together (and for writing many of these)\!
 
 ### Data Packages
 
@@ -37,8 +36,8 @@ relevant data directly in R a little bit easier.
   - `FedData`: There are many federal datasets that come in a variety of
     formats. The `FedData` package provides access to many of these and
     takes a way a lot of the pain of working with all the multiple
-    formats. Some of the datasets it access are: NHD, NED, NLCD, SSURGO,
-    and Daymet. <https://cran.rstudio.org/package=FedData>
+    formats. Some of the datasets it accesses are: NHD, NED, NLCD,
+    SSURGO, and Daymet. <https://cran.rstudio.org/package=FedData>
   - `LAGOSNE`: Provides access to the LAGOSNE dataset, a dataset on more
     than 51,000 lakes in 17 states from the northeast and midwest United
     States. <https://cran.rstudio.org/package=LAGOSNE>
@@ -54,9 +53,9 @@ relevant data directly in R a little bit easier.
 ### Analysis Packages
 
   - `GLMr`: This is one of the packages I’ve included that is not
-    currently on CRAN. It provides access to the General Lake Model in
-    R. It does require that the GLM be installed on your local machine
-    as well. <https://github.com/GLEON/GLMr>
+    currently on CRAN. It provides access to the General Lake Model
+    (GLM) in R. It does require that the GLM be installed on your local
+    machine as well. <https://github.com/GLEON/GLMr>
   - `glmtools`: Also not on CRAN, this package provides additional tools
     for interacting with the General Lake Model.
     <https://github.com/USGS-R/glmtools>

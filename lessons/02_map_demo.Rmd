@@ -1,9 +1,6 @@
 ---
 output: github_document
-editor_options: 
-  chunk_output_type: console
 ---
-
 
 ```{r setup, echo=FALSE, warning=FALSE, purl=FALSE, message=FALSE}
 options(repos="http://cran.rstudio.com/")
@@ -13,7 +10,7 @@ opts_chunk$set(tidy=FALSE)
 ```
  
 # Demo: Making maps
-Now that we have all the infrastructure packages dealt with, we can read spatial data into R, do GISy type things to that data, and write those results out to other data formats.  We haven't talked about creating maps yet.  There are many ways we can do this, but we will focus on three: default plotting, static maps with `ggplot2`, and interactive maps with `mapview`.
+This demo will be focused on creating maps in R.  There are many ways we can do this, but we will focus on three: default plotting, static maps with `ggplot2`, and interactive maps with `mapview`.  We also will need to read in some spatial data to map!
 
 ## Lesson Outline
 - [Get some data](#get-some-data)
@@ -38,7 +35,7 @@ But for now, lets create a new project in RStudio.
 3. In your newly created project (which should be open in RStudio now), go to File: New File and choose R Script.
 4. When that blank new R Script opens up, save it as "map_demo.R"
 
-Let's now add code to get some data.
+Let's now add code to our "map_demo.R" script that will get some data.
 
 ```{r, eval=FALSE, message=FALSE, warning=FALSE}
 lakes_url <- "https://github.com/jhollist/troutlake_rspatial/raw/master/data/ntl135_v2.zip"
@@ -60,7 +57,7 @@ ntl_bathy <- st_read("nhld_bathymetry/nhld_bathymetry.shp")
 ```
 
 ## Default plotting
-Default plotting methods exist within each of the major spatial packages listed above which allows us to use the  `plot()` function to create a simple plot of our spatial data.  Let's take a look at the NTL Lakes:
+Default plotting methods exist within each of the major spatial packages listed above which allows us to use the  `plot()` function to create a plot of our spatial data.  Let's take a look at the NTL Lakes:
 
 ```{r}
 plot(st_geometry(ntl_lakes))

@@ -3,9 +3,9 @@ render_all<-function(path=".",pattern="*.Rmd"){
   for(i in files){
     out <- stringr::str_replace(i,"Rmd","md")
     if(!file.exists(out)){
-      knitr::knit(i,output=out)
+      rmarkdown::render(i)
     } else if((file.info(i)$mtime-file.info(out)$mtime)>0){
-      knitr::knit(i,output=out)
+      rmarkdown::render(i)
     }
   }
 }
