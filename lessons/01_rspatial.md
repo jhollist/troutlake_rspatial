@@ -16,6 +16,13 @@ measure). Raster data is still mostly dealt with via the
 [`raster`](https://cran.r-project.org/package=raster) package (although
 this is changing too) and we will also be using that.
 
+Also, there are some really nice resource available for learning how to
+use R for spatial data analysis. A couple I like:
+
+  - [Geocomputation with R](https://geocompr.robinlovelace.net/)
+  - [r-spatial](https://www.r-spatial.org/)
+  - [rspatial](https://www.rspatial.org/)
+
 ## Lesson Outline
 
   - [`sf`](#sf)

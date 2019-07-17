@@ -12,6 +12,12 @@ opts_chunk$set(tidy=FALSE)
 # R for Spatial Analysis
 Not too long ago, the standard advice for mixing spatial analysis and R was to do your spatial analysis tasks with a GIS and your statistical analysis of the results of that analysis with R.  However, since the late 2000's there has been a rapid increase in the spatial data handling and analysis capability of R.  The `rgdal`, `rgeos`, `raster`, and `sp` packages (through the very significant effort of the package authors) provided the foundation for doing GIS entirely within R. More recently a new route for handling vector data has emerged in the [`sf` package](https://cran.r-project.org/package=sf).  Most current development for vector processing is focusing on `sf`.  As such, this mini-workshop will as well (with a little bit of `sp` thrown in for good measure).  Raster data is still mostly dealt with via the [`raster`](https://cran.r-project.org/package=raster) package (although this is changing too) and we will also be using that.
 
+Also, there are some really nice resource available for learning how to use R for spatial data analysis.  A couple I like:
+
+- [Geocomputation with R](https://geocompr.robinlovelace.net/)
+- [r-spatial](https://www.r-spatial.org/)
+- [rspatial](https://www.rspatial.org/)
+
 ## Lesson Outline
 - [`sf`](#sf)
 - [`raster`](#raster)
